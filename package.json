@@ -2,7 +2,7 @@
   "name": "hapi_framework_app",
   "version": "1.0.0",
   "description": "Makes a single resource REST app using a server side framework other than Express.  Code Fellows 401 assignment.",
-  "main": "index.js",
+  "main": "server.js",
   "directories": {
     "test": "test"
   },
@@ -17,7 +17,8 @@
   "keywords": [
     "hapi"
   ],
-  "author": "Maria Romero",
+  "author": "a Code Fellows 401JS team",
+  "contributors": ["Maria Romero", "Benjamin Nolan", "Phillip Nguyen"]
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MiaRomero/hapi-framework/issues"
@@ -25,7 +26,6 @@
   "homepage": "https://github.com/MiaRomero/hapi-framework#readme",
   "dependencies": {
     "hapi": "^13.3.0",
-    "hapi-mongoose": "^1.0.1",
     "mongoose": "^4.4.13"
   },
   "devDependencies": {
