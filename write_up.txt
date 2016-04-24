@@ -1,0 +1,50 @@
+  For this simple REST API using the hapi framework, the layout and implementation
+are very similar to the ones we have made with the express framework.
+
+  To get our server up and running with hapi, we had to actually create a server
+object and tell it where to connect and then tell it to start.  With express, we
+had to instantiate a new instance of express and call app.listen(), a wrapper
+around the http.createServer() function.
+
+  Routing with hapi seemed a little more straightforward than with express.
+Routing is done by calling the route method on the server object and passing it
+an object that contains the request type, path, and handler as properties.  The
+handler takes the request and reply objects as params (example below).
+
+  server.route({
+    method: 'GET',
+    path: '/',
+    handler: function(request, reply){
+      console.log('get request');
+    }
+  });
+
+  The layout for describing the routes is much easier to read than with express.
+Creating multiple routes in this app and mounting them to the server was also
+extremely easy.  We only had to create an array of route objects and pass it to
+the server.route() function.
+
+  Routing with express isn't difficult per se, but the construction of a route
+is not as easy on the eyes.  Routing is done by calling the appropriate route
+method on the app object, passing in the route and the callback function:
+
+  app.get('/', function(req, res) {
+    console.log('get request');
+  });
+
+Routes are mounted with:  app.use('/api', router), with 'router' being a new instance
+of the express Router.
+
+  Error handling for this app was much easier than previous apps using express.
+hapi takes care of error handling for you, returning a json object with the
+error code and description.  In express handling and related messages
+(for example the 404 error) must be explicitly included in the code.
+
+  hapi seems to have more features built-in than express.  For example, with our
+previous REST API assignment, we needed body-parser to parse the data for our POST
+and PUT requests.  hapi does that automatically for us.
+
+  Overall, to the extent that we have used both express and hapi so far, it seems
+that the benefit of express is it's flexibility and the benefit of hapi is it's
+ease of use.  hapi doesn't require as much middleware (such as the body-parser),
+but you cannot customize your error handling as easily as with express.
