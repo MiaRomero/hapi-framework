@@ -10,6 +10,10 @@ The server is launched on `localhost:3000` by running the following on the comma
 
 GET requests to `localhost:3000/zoo` will display all of the animals in the zoo (database).
 
+GET requests with a specific animal id will display only the animal you are looking for.
+
+`http GET :3000/zoo/<animal id>`
+
 POST requests made to the same url will add an animal to the database.  Required properties for each animal are name, variety, age, origin, and food.  An example POST request using httpie:
 
 `http POST :3000/zoo name='Tuxedo McBirdfish' variety=emperor age:=4 origin=Antartica food=fish`

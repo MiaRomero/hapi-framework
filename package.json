@@ -18,7 +18,7 @@
     "hapi"
   ],
   "author": "a Code Fellows 401JS team",
-  "contributors": ["Maria Romero", "Benjamin Nolan", "Phillip Nguyen"]
+  "contributors": "["Maria Romero", "Benjamin Nolan", "Phillip Nguyen"]",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MiaRomero/hapi-framework/issues"
