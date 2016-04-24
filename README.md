@@ -27,14 +27,14 @@ A DELETE request is also made to `localhost:3000/zoo/:id`
 `http DELETE :3000/zoo/<Tuxedo McBirdfish's id>`
 
 ###Dependencies
-hapi
-mongoose
-chai
-chai-http
-gulp
-gulp-eslint
-gulp-mocha
-mocha
+hapi  
+mongoose  
+chai  
+chai-http  
+gulp  
+gulp-eslint  
+gulp-mocha  
+mocha  
 
 ###Testing and task-runners
 
