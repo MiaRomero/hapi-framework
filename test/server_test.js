@@ -5,9 +5,16 @@ chai.use(chaiHttp);
 const request = chai.request;
 const mongoose = require('mongoose');
 process.env.MONGODB_URI = 'mongodb://localhost/zoo_testDB';
-require(__dirname + '/../lib/server');
+const server = require(__dirname + '/../lib/server');
 const Animal = require(__dirname + '/../models/animal_model');
 
+describe('the server', () => {
+  after((done) => {
+    server.stop(() => {
+      done();
+    });
+  });
+});
 describe('the POST method', () => {
   after((done) => {
     mongoose.connection.db.dropDatabase(() => {
