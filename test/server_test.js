@@ -36,8 +36,8 @@ describe('The GET method', () => {
     .get('/zoo')
     .end((err, res) => {
       expect(err).to.eql(null);
-      expect(Array.isArray(res.body)).to.eql(true);
-      expect(res.body.length).to.eql(0);
+      expect(res.body.statusCode).to.eql(200);
+      expect(res.body.message).to.eql('Here are all the animals in the zoo: ');
       done();
     });
   });
@@ -46,7 +46,7 @@ describe('The GET method', () => {
 describe('routes that need animals in the DB', () => {
   beforeEach((done) => {
     var newAnimal = new Animal({ name: 'test', variety: 'tests', age: 10,
-     origin: 'test,tests', food: 'souls' });
+     origin: 'test, tests', food: 'souls' });
     newAnimal.save((err, data) => {
       console.log(err);
       this.animal = data;
@@ -80,26 +80,35 @@ describe('routes that need animals in the DB', () => {
   });
   it('should change the animal\'s identity on a PUT request', (done) => {
     request('localhost:3000')
-    .put('/zoo' + this.animal._id)
+    .put('/zoo/' + this.animal._id)
     .send({ name: 'frank', variety: 'bear', age: 13,
     origin: 'california', food: 'fish' })
     .end((err, res) => {
       expect(err).to.eql(null);
-      expect(res.payload.msg).to.eql('successfully updated!');
+      expect(res.body.msg).to.eql('Succesfully updated!');
       done();
     });
   });
 it('should delete an animal on a DELETE request', (done) => {
   request('localhost:3000')
-  .delete('/zoo' + this.animal._id)
+  .delete('/zoo/' + this.animal._id)
   .end((err, res) => {
     expect(err).to.eql(null);
-    expect(res.body.msg).to.eql('sucessfully deleted!');
+    expect(res.body.msg).to.eql('Succesfully deleted!');
     done();
     });
   });
 });
 
 describe('server error', () => {
-  it('should error on a bad request')
-})
+  it('should error on a bad request', (done) => {
+    request('localhost:3000')
+    .get('/badroute')
+    .end((err, res) => {
+      expect(err).to.not.eql(null);
+      expect(res.body.statusCode).to.eql(404);
+      expect(res.body.error).to.eql('Not Found');
+      done();
+    });
+  });
+});
