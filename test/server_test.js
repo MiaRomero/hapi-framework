@@ -54,15 +54,13 @@ describe('routes that need animals in the DB', () => {
   beforeEach((done) => {
     var newAnimal = new Animal({ name: 'test', variety: 'tests', age: 10,
      origin: 'test, tests', food: 'souls' });
-    newAnimal.save((err, data) => {
-      console.log(err);
+    newAnimal.save((data) => {
       this.animal = data;
       done();
     });
   });
   afterEach((done) => {
-    this.animal.remove((err) => {
-      console.log(err);
+    this.animal.remove(() => {
       done();
     });
   });
