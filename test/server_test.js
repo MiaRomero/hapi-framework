@@ -5,7 +5,7 @@ chai.use(chaiHttp);
 const request = chai.request;
 const mongoose = require('mongoose');
 process.env.MONGODB_URI = 'mongodb://localhost/zoo_testDB';
-const server = require(__dirname + '/../lib/server');
+const server = require(__dirname + '/../server');
 const Animal = require(__dirname + '/../models/animal_model');
 
 describe('the server', () => {
@@ -54,7 +54,8 @@ describe('routes that need animals in the DB', () => {
   beforeEach((done) => {
     var newAnimal = new Animal({ name: 'test', variety: 'tests', age: 10,
      origin: 'test, tests', food: 'souls' });
-    newAnimal.save((data) => {
+    newAnimal.save((err, data) => {
+      if (err) throw err;
       this.animal = data;
       done();
     });
