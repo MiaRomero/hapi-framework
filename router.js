@@ -1,6 +1,6 @@
 'use strict';
-const Animal = require(__dirname + '/../models/animal_model');
-const errorHandler = require(__dirname + '/errorHandler.js');
+const Animal = require(__dirname + '/models/animal_model');
+const errorHandler = require(__dirname + '/lib/errorHandler.js');
 
 module.exports = [
 {
