@@ -34,7 +34,7 @@ mocha
 
 ###Testing and task-runners
 
-Tests are implemented with chai, chai-http, and mocha; and run with `gulp test` and `gulp lint`.
+Tests are implemented with chai, chai-http, and mocha; and run with `gulp lint:test`, `gulp lint:nontest`, and `gulp mocha`. Or `gulp` for all tests.
 
 ###Authors
  Maria Romero, Ben Nolan, Phillip Nguyen
